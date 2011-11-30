@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         id="application"
+         point="org.eclipse.core.runtime.applications">
+      <application>
+         <run
+               class="com.life.audiotageditor.Application">
+         </run>
+      </application>
+   </extension>
+   <extension
+         id="product"
+         point="org.eclipse.core.runtime.products">
+      <product
+            application="com.life.audiotageditor.application"
+            name="AudioPropertyEditor">
+         <property
+               name="appName"
+               value="AudioPropertyEditor">
+         </property>
+      </product>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            name="RCP Perspective"
+            class="com.life.audiotageditor.Perspective"
+            id="com.life.audiotageditor.perspective">
+      </perspective>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            class="com.life.audiotageditor.views.AudioView"
+            id="com.life.audiotageditor.views.AudioView"
+            name="Audio View">
+      </view>
+      <view
+            class="com.life.audiotageditor.views.AudioPropertySheet"
+            id="com.life.audiotageditor.views.AudioPropertySheet"
+            name="Audio Property Sheet"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            class="com.life.audiotageditor.editor.AudioTagEditor"
+            id="com.life.audiotageditor.editor.AudioTagEditor"
+            name="AudioTag Editor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.ui.resourcePerspective">
+         <view
+               id="com.life.audiotageditor.views.AudioView"
+               ratio="0.5"
+               relationship="stack"
+               relative="org.eclipse.ui.navigator.ProjectExplorer">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="com.life.audiotageditor.commands.openFolderCommand"
+            name="Open Audio Folder">
+      </command>
+      <command
+            id="com.life.audiotageditor.commands.openFileCommand"
+            name="Open Audio File">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.life.audiotageditor.handlers.OpenFolderHandler"
+            commandId="com.life.audiotageditor.commands.openFolderCommand">
+      </handler>
+      <handler
+            class="com.life.audiotageditor.handlers.OpenFileHandler"
+            commandId="com.life.audiotageditor.commands.openFileCommand">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="com.life.audiotageditor.menus.fileMenu"
+               label="File"
+               mnemonic="M">
+            <command
+                  commandId="com.life.audiotageditor.commands.openFolderCommand"
+                  id="com.life.audiotageditor.menus.openFolderCommand"
+                  mnemonic="S">
+            </command>
+            <command
+                  commandId="com.life.audiotageditor.commands.openFileCommand"
+                  id="com.life.audiotageditor.menus.openFileCommand"
+                  mnemonic="S">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.life.audiotageditor.toolbars.openFolderToolbar">
+            <command
+                  commandId="com.life.audiotageditor.commands.openFolderCommand"
+                  icon="icons/folder.gif"
+                  id="com.life.audiotageditor.toolbars.openFolderCommand"
+                  tooltip="Open Folder">
+            </command>
+         </toolbar>
+         <toolbar
+               id="com.life.audiotageditor.toolbars.openFileToolbar">
+            <command
+                  commandId="com.life.audiotageditor.commands.openFileCommand"
+                  icon="icons/file.gif"
+                  id="com.life.audiotageditor.toolbars.openFileCommand"
+                  tooltip="Open File">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
+
+</plugin>

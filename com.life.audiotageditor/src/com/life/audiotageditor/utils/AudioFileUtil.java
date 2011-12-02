@@ -23,9 +23,13 @@ public class AudioFileUtil {
 		try {
 			AudioFile audioFile = AudioFileIO.read(new File(path));
 			Tag tagv1 = new ID3v1Tag();
-			tagv1.setField(FieldKey.ALBUM, audioTag.getAlbum());
 			tagv1.setField(FieldKey.TITLE, audioTag.getTitle());
 			tagv1.setField(FieldKey.ARTIST, audioTag.getArtist());
+			tagv1.setField(FieldKey.ALBUM, audioTag.getAlbum());
+			tagv1.setField(FieldKey.YEAR, audioTag.getYear());
+			tagv1.setField(FieldKey.GENRE, audioTag.getGenre());
+			tagv1.setField(FieldKey.COMMENT, audioTag.getComment());
+			tagv1.setField(FieldKey.ALBUM_ARTIST, audioTag.getAlbumArtist());
 			audioFile.setTag(tagv1);
 
 			Tag tagv23 = new ID3v23Tag();
@@ -35,6 +39,10 @@ public class AudioFileUtil {
 			if (!audioTag.getTrack().isEmpty()) {
 				tagv23.setField(FieldKey.TRACK, audioTag.getTrack());
 			}
+			tagv23.setField(FieldKey.YEAR, audioTag.getYear());
+			tagv23.setField(FieldKey.GENRE, audioTag.getGenre());
+			tagv23.setField(FieldKey.COMMENT, audioTag.getComment());
+			tagv23.setField(FieldKey.ALBUM_ARTIST, audioTag.getAlbumArtist());
 			audioFile.setTag(tagv23);
 
 			AudioFileIO.write(audioFile);

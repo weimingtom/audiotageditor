@@ -1,32 +1,49 @@
 package com.life.audiotageditor.audio;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 
 public class AudioTag {
 
-	public static AudioTag getAudioTag(AudioFile audioFile) {
-		return new AudioTag(audioFile);
-	}
+	private AudioFile audioFile;
+	private Tag audioTag;
 
 	public AudioTag(AudioFile audioFile) {
 		if (audioFile == null) {
 			return;
 		}
-		Tag tag = audioFile.getTag();
-		if (tag == null) {
+		this.audioFile = audioFile;
+		audioTag = audioFile.getTag();
+		if (audioTag == null) {
 			return;
 		}
-		this.title = tag.getFirst(FieldKey.TITLE);
-		this.artist = tag.getFirst(FieldKey.ARTIST);
-		this.album = tag.getFirst(FieldKey.ALBUM);
-		this.year = tag.getFirst(FieldKey.YEAR);
-		this.track = tag.getFirst(FieldKey.TRACK);
-		this.genre = tag.getFirst(FieldKey.GENRE);
-		this.comment = tag.getFirst(FieldKey.COMMENT);
-		this.albumArtist = tag.getFirst(FieldKey.ALBUM_ARTIST);
 
+		initContent();
+	}
+
+	private void initContent() {
+		this.title = audioTag.getFirst(FieldKey.TITLE);
+		this.artist = audioTag.getFirst(FieldKey.ARTIST);
+		this.album = audioTag.getFirst(FieldKey.ALBUM);
+		this.year = audioTag.getFirst(FieldKey.YEAR);
+		this.track = audioTag.getFirst(FieldKey.TRACK);
+		this.genre = audioTag.getFirst(FieldKey.GENRE);
+		this.comment = audioTag.getFirst(FieldKey.COMMENT);
+		this.albumArtist = audioTag.getFirst(FieldKey.ALBUM_ARTIST);
+		
+		this.fileName = audioFile.getFile().getName();
+		this.path = audioFile.getFile().getPath();
+		this.tag = audioTag.getClass().getSimpleName();
+		this.codec = audioFile.getAudioHeader().getEncodingType();
+		this.bitRate = audioFile.getAudioHeader().getBitRate();
+		this.frequency = "";
+		this.length = audioFile.getFile().length() + "";
+		this.modified = SimpleDateFormat.getDateTimeInstance().format(
+				new Date(audioFile.getFile().lastModified()));
 	}
 
 	private String title = "";
@@ -42,7 +59,7 @@ public class AudioTag {
 	private String path = "";
 	private String tag = "";
 	private String codec = "";
-	private String bitrate = "";
+	private String bitRate = "";
 	private String frequency = "";
 	private String length = "";
 	private String modified = "";
@@ -143,12 +160,12 @@ public class AudioTag {
 		this.codec = codec;
 	}
 
-	public String getBitrate() {
-		return bitrate;
+	public String getBitRate() {
+		return bitRate;
 	}
 
-	public void setBitrate(String bitrate) {
-		this.bitrate = bitrate;
+	public void setBitRate(String bitRate) {
+		this.bitRate = bitRate;
 	}
 
 	public String getFrequency() {

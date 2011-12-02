@@ -1,5 +1,9 @@
 package com.life.audiotageditor.model;
 
+import org.eclipse.ui.views.properties.IPropertySource;
+
+import com.life.audiotageditor.property.AudioModelProperySource;
+
 public class AudioModel implements IAudioModel {
 
 	String path;
@@ -67,14 +71,17 @@ public class AudioModel implements IAudioModel {
 	}
 
 	@Override
-	public Object getAdapter(Class<?> adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	public int getType() {
+		return AUDIO_ROOT;
 	}
 
 	@Override
-	public int getType() {
-		return AUDIO_ROOT;
+	@SuppressWarnings("rawtypes")
+	public Object getAdapter(Class adapter) {
+		if (adapter.equals(IPropertySource.class)) {
+			return new AudioModelProperySource(this);
+		}
+		return null;
 	}
 
 }

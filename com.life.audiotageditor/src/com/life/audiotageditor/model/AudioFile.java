@@ -32,9 +32,9 @@ public class AudioFile extends AudioModel implements IAudioFile {
 	}
 
 	@Override
-	public Object getAdapter(Class<?> adapter) {
-		// TODO Auto-generated method stub
-		return null;
+	@SuppressWarnings("rawtypes")
+	public Object getAdapter(Class adapter) {
+		return super.getAdapter(adapter);
 	}
 
 }

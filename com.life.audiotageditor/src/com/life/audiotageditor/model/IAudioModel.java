@@ -1,5 +1,7 @@
 package com.life.audiotageditor.model;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 public interface IAudioModel extends IAdaptable {
 
 	static final int NULL_FLAG = -1;

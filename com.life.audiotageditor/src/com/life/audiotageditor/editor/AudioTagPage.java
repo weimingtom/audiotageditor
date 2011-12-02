@@ -76,6 +76,9 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 			if (data instanceof AudioFile) {
 				AudioTag audioTag = ((AudioFileInfo) (data).getAudioModelInfo())
 						.getAudioTag();
+				if (value.equals(ReflectUtil.getProperty(audioTag, property))) {
+					return;
+				}
 				ReflectUtil.setProperty(audioTag, property, value.toString());
 				AudioFileUtil.saveAudioFile(data.getFullPath(), audioTag);
 				tableViewer.refresh();
@@ -136,6 +139,8 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		albumArtist.setWidth(200);
 		albumArtist.setText("AlbumArtist");
 
+		table.setSortColumn(trackColumn);
+
 		tableViewer.setContentProvider(new AudioTagContentProvider());
 		tableViewer.setLabelProvider(new AudioTagLabelProvider());
 		tableViewer.setInput(null);
@@ -151,6 +156,8 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		tableViewer.setCellModifier(new AudioTagCellModifier());
 
 		getSite().getPage().addSelectionListener(AudioView.ID, this);
+
+		getSite().setSelectionProvider(tableViewer);
 	}
 
 	@Override

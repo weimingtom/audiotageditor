@@ -1,5 +1,7 @@
 package com.life.audiotageditor.model;
 
+import org.eclipse.core.runtime.IAdaptable;
+
 public interface IAudioContainer extends IAudioModel, IAdaptable {
 
 	public IAudioFolder getFolder(String name);

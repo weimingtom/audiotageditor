@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="AudioPropertyEditor" uid="audiotageditor" id="com.life.audiotageditor.product" application="com.life.audiotageditor.application" version="1.0.0" useFeatures="false" includeLaunchers="true">
+<product name="%productName" uid="audiotageditor" id="com.life.audiotageditor.product" application="com.life.audiotageditor.application" version="1.0.0" useFeatures="false" includeLaunchers="false">
 
+   <aboutInfo>
+      <text>
+         %productBlurb
+      </text>
+   </aboutInfo>
 
    <configIni use="default">
    </configIni>

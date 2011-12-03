@@ -16,10 +16,14 @@
          point="org.eclipse.core.runtime.products">
       <product
             application="com.life.audiotageditor.application"
-            name="AudioPropertyEditor">
+            name="%productName">
          <property
                name="appName"
-               value="AudioPropertyEditor">
+               value="%productName">
+         </property>
+         <property
+               name="aboutText"
+               value="%productBlurb">
          </property>
       </product>
    </extension>
@@ -50,7 +54,7 @@
       <editor
             class="com.life.audiotageditor.editor.AudioTagEditor"
             id="com.life.audiotageditor.editor.AudioTagEditor"
-            name="AudioTag Editor">
+            name="Audio Tag Editor">
       </editor>
    </extension>
    <extension
@@ -98,12 +102,29 @@
             <command
                   commandId="com.life.audiotageditor.commands.openFolderCommand"
                   id="com.life.audiotageditor.menus.openFolderCommand"
-                  mnemonic="S">
+                  mnemonic="F">
             </command>
             <command
                   commandId="com.life.audiotageditor.commands.openFileCommand"
                   id="com.life.audiotageditor.menus.openFileCommand"
                   mnemonic="S">
+            </command>
+            <separator
+                  name="com.life.audiotageditor.file.separator"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="org.eclipse.ui.file.exit"
+                  label="Exit">
+            </command>
+         </menu>
+         <menu
+               id="com.life.audiotageditor.menus.helpMenu"
+               label="Help">
+            <command
+                  commandId="org.eclipse.ui.help.aboutAction"
+                  id="com.life.audiotageditor.menus.aboutAction"
+                  >
             </command>
          </menu>
       </menuContribution>

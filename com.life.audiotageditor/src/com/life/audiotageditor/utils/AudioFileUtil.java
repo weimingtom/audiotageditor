@@ -29,7 +29,7 @@ public class AudioFileUtil {
 			tagv1.setField(FieldKey.YEAR, audioTag.getYear());
 			tagv1.setField(FieldKey.GENRE, audioTag.getGenre());
 			tagv1.setField(FieldKey.COMMENT, audioTag.getComment());
-			tagv1.setField(FieldKey.ALBUM_ARTIST, audioTag.getAlbumArtist());
+//			tagv1.setField(FieldKey.ALBUM_ARTIST, audioTag.getAlbumArtist());
 			audioFile.setTag(tagv1);
 
 			Tag tagv23 = new ID3v23Tag();

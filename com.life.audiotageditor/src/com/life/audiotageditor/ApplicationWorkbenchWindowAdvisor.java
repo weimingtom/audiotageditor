@@ -38,7 +38,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		Rectangle screenSize = Display.getDefault().getClientArea();
 		configurer
 				.setInitialSize(new Point(screenSize.width, screenSize.height));
-		configurer.setTitle("AudioTagEditor"); //$NON-NLS-1$
+		configurer.setTitle("Audio Tag Editor"); //$NON-NLS-1$
 	}
 
 	@Override

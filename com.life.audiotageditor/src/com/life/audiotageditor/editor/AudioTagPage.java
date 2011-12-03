@@ -7,11 +7,14 @@ import org.eclipse.jface.viewers.TableViewer;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeSelection;
 import org.eclipse.swt.SWT;
+import org.eclipse.swt.events.VerifyEvent;
+import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.layout.FillLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
+import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.ISelectionListener;
 import org.eclipse.ui.IWorkbenchPart;
 import org.eclipse.ui.forms.IManagedForm;
@@ -120,7 +123,7 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		albumColumn.setText("Album");
 
 		TableColumn yearColumn = new TableColumn(table, SWT.NONE);
-		yearColumn.setWidth(50);
+		yearColumn.setWidth(150);
 		yearColumn.setText("Year");
 
 		TableColumn trackColumn = new TableColumn(table, SWT.NONE);
@@ -140,6 +143,7 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		albumArtist.setText("AlbumArtist");
 
 		table.setSortColumn(trackColumn);
+		// table.setSortDirection(SWT.UP);
 
 		tableViewer.setContentProvider(new AudioTagContentProvider());
 		tableViewer.setLabelProvider(new AudioTagLabelProvider());
@@ -151,6 +155,16 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		CellEditor[] cellEditors = new CellEditor[9];
 		for (int i = 1; i < 9; i++) {
 			cellEditors[i] = new TextCellEditor(tableViewer.getTable());
+			if (i == 5) {
+				((Text) cellEditors[i].getControl())
+						.addVerifyListener(new VerifyListener() {
+							@Override
+							public void verifyText(VerifyEvent e) {
+								boolean b = (e.text.matches("[0-9]"));
+								e.doit = b;
+							}
+						});
+			}
 		}
 		tableViewer.setCellEditors(cellEditors);
 		tableViewer.setCellModifier(new AudioTagCellModifier());

@@ -79,6 +79,10 @@
             id="com.life.audiotageditor.commands.openFileCommand"
             name="Open Audio File">
       </command>
+      <command
+            id="com.life.audiotageditor.commands.batchEditCommand"
+            name="BatchEdit Audio File">
+      </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
@@ -89,6 +93,10 @@
       <handler
             class="com.life.audiotageditor.handlers.OpenFileHandler"
             commandId="com.life.audiotageditor.commands.openFileCommand">
+      </handler>
+      <handler
+            class="com.life.audiotageditor.handlers.BatchEditHandler"
+            commandId="com.life.audiotageditor.commands.batchEditCommand">
       </handler>
    </extension>
    <extension
@@ -101,16 +109,28 @@
                mnemonic="M">
             <command
                   commandId="com.life.audiotageditor.commands.openFolderCommand"
+                  icon="icons/folder.gif"
                   id="com.life.audiotageditor.menus.openFolderCommand"
                   mnemonic="F">
             </command>
             <command
                   commandId="com.life.audiotageditor.commands.openFileCommand"
+                  icon="icons/file.gif"
                   id="com.life.audiotageditor.menus.openFileCommand"
                   mnemonic="S">
             </command>
             <separator
-                  name="com.life.audiotageditor.file.separator"
+                  name="com.life.audiotageditor.file.batchEditSeparator"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="com.life.audiotageditor.commands.batchEditCommand"
+                  icon="icons/folder.gif"
+                  id="com.life.audiotageditor.menus.batchEditCommand"
+                  mnemonic="S">
+            </command>
+            <separator
+                  name="com.life.audiotageditor.file.exitSeparator"
                   visible="true">
             </separator>
             <command

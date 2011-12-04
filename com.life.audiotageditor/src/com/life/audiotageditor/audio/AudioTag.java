@@ -12,6 +12,9 @@ public class AudioTag {
 	private AudioFile audioFile;
 	private Tag audioTag;
 
+	public AudioTag() {
+	}
+
 	public AudioTag(AudioFile audioFile) {
 		if (audioFile == null) {
 			return;
@@ -34,7 +37,7 @@ public class AudioTag {
 		this.genre = audioTag.getFirst(FieldKey.GENRE);
 		this.comment = audioTag.getFirst(FieldKey.COMMENT);
 		this.albumArtist = audioTag.getFirst(FieldKey.ALBUM_ARTIST);
-		
+
 		this.fileName = audioFile.getFile().getName();
 		this.path = audioFile.getFile().getPath();
 		this.tag = audioTag.getClass().getSimpleName();

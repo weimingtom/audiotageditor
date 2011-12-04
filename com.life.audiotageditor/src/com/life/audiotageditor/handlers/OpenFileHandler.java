@@ -3,11 +3,13 @@ package com.life.audiotageditor.handlers;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
 import org.eclipse.core.commands.ExecutionException;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import com.life.audiotageditor.model.AudioFile;
 import com.life.audiotageditor.model.AudioModel;
 import com.life.audiotageditor.model.AudioModelManager;
 import com.life.audiotageditor.utils.StringUtil;
@@ -34,12 +36,18 @@ public class OpenFileHandler extends AbstractHandler {
 		IWorkbenchWindow window = HandlerUtil
 				.getActiveWorkbenchWindowChecked(event);
 		String path = openFileDialog(window);
+		if (path == null || path.isEmpty()) {
+			return null;
+		}
 		AudioView audioView = (AudioView) window.getActivePage().findView(
 				AudioView.ID);
 		AudioModel audioModel = (AudioModel) AudioModelManager.instance()
 				.getRoot();
-		audioView.getTreeViewer().setInput(
-				audioModel.getFile(StringUtil.formatPath(path)));
+		AudioFile audioFile = (AudioFile) audioModel.getFile(StringUtil
+				.formatPath(path));
+		audioView.getTreeViewer().setInput(audioFile);
+		audioView.getTreeViewer().setSelection(
+				new StructuredSelection(audioFile), true);
 		return null;
 	}
 

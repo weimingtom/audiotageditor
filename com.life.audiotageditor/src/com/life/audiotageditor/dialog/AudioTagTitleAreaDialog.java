@@ -2,6 +2,7 @@ package com.life.audiotageditor.dialog;
 
 import org.eclipse.jface.dialogs.IDialogConstants;
 import org.eclipse.jface.dialogs.TitleAreaDialog;
+import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.events.MouseEvent;
 import org.eclipse.swt.events.MouseListener;
@@ -19,6 +20,16 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
+import org.eclipse.ui.PlatformUI;
+
+import com.life.audiotageditor.audio.AudioTag;
+import com.life.audiotageditor.model.AudioFolder;
+import com.life.audiotageditor.model.AudioModel;
+import com.life.audiotageditor.model.AudioModelManager;
+import com.life.audiotageditor.model.IAudioFile;
+import com.life.audiotageditor.model.IAudioModel;
+import com.life.audiotageditor.utils.StringUtil;
+import com.life.audiotageditor.views.AudioView;
 
 public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 	private Text audioFolderText;
@@ -89,8 +100,26 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 			@Override
 			public void mouseDown(MouseEvent e) {
 				String path = openFolderDialog(parentShell);
+				if (path == null || path.isEmpty()) {
+					return;
+				}
 				audioFolderText.setText(path);
-				System.out.println(path);
+				IAudioModel[] members = ((AudioFolder) ((AudioModel) AudioModelManager
+						.instance().getRoot()).getFolder(StringUtil
+						.formatPath(path))).members();
+				StringBuilder builder = new StringBuilder();
+				int i = 1;
+				for (IAudioModel member : members) {
+					if (member instanceof IAudioFile) {
+						builder.append(i);
+						builder.append("-");
+						builder.append(member.getName());
+						builder.append("\r\n");
+
+						i++;
+					}
+				}
+				audioTagDetailText.setText(builder.toString());
 			}
 
 			@Override
@@ -223,6 +252,33 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 	@Override
 	protected Point getInitialSize() {
 		return new Point(600, 500);
+	}
+
+	@Override
+	protected void okPressed() {
+		String audioFolderTextValue = audioFolderText.getText();
+		if (audioFolderTextValue != null && !(audioFolderTextValue.isEmpty())) {
+			AudioTag audioTag = new AudioTag();
+			audioTag.setArtist(artistText.getText());
+			audioTag.setAlbum(albumText.getText());
+			audioTag.setYear(yearText.getText());
+			audioTag.setGenre(genreText.getText());
+			audioTag.setComment(commentText.getText());
+			audioTag.setAlbumArtist(albumArtistText.getText());
+
+			AudioView audioView = (AudioView) PlatformUI.getWorkbench()
+					.getActiveWorkbenchWindow().getActivePage()
+					.findView(AudioView.ID);
+			AudioModel audioModel = (AudioModel) AudioModelManager.instance()
+					.getRoot();
+
+			AudioFolder audioFolder = (AudioFolder) audioModel
+					.getFolder(StringUtil.formatPath(audioFolderTextValue));
+			audioView.getTreeViewer().setInput(audioFolder);
+			audioView.getTreeViewer().setSelection(
+					new StructuredSelection(audioFolder.members()[0]), true);
+		}
+		super.okPressed();
 	}
 
 	private String openFolderDialog(Shell shell) {

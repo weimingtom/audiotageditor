@@ -55,7 +55,7 @@ public class OpenFolderHandler extends AbstractHandler {
 	private String openFolderDialog(IWorkbenchWindow window) {
 		DirectoryDialog dialog = new DirectoryDialog(window.getShell(),
 				SWT.OPEN);
-		dialog.setText("Audio Folder");
+		dialog.setText(Messages.OpenFolderHandler_dialog_text);
 		return dialog.open();
 	}
 }

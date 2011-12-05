@@ -14,6 +14,7 @@ import org.eclipse.ui.application.IActionBarConfigurer;
 import org.eclipse.ui.application.IWorkbenchWindowConfigurer;
 import org.eclipse.ui.application.WorkbenchWindowAdvisor;
 
+import com.life.audiotageditor.constants.Constants;
 import com.life.audiotageditor.editor.AudioTagEditor;
 import com.life.audiotageditor.input.AudioInput;
 import com.life.audiotageditor.model.AudioModel;
@@ -38,7 +39,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		Rectangle screenSize = Display.getDefault().getClientArea();
 		configurer
 				.setInitialSize(new Point(screenSize.width, screenSize.height));
-		configurer.setTitle("Audio Tag Editor"); //$NON-NLS-1$
+		configurer.setTitle(Messages.ApplicationWorkbenchWindowAdvisor_audio_tag_editor_title); 
 	}
 
 	@Override
@@ -49,7 +50,7 @@ public class ApplicationWorkbenchWindowAdvisor extends WorkbenchWindowAdvisor {
 		if (workbench.getPerspectiveRegistry().getDefaultPerspective()
 				.equals(Perspective.PERSPECTIVE_ID)) {
 
-			String path = new File("").getAbsolutePath();
+			String path = new File(Constants.STRING_NONE).getAbsolutePath();
 			IAudioFile audioFile = ((AudioModel) AudioModelManager.instance()
 					.getRoot()).getFile(StringUtil.formatPath(path));
 			if (path != null) {

@@ -28,8 +28,8 @@ public class AudioModelManager {
 		if (flag.isDirectory()) {
 			return new AudioFolderInfo(path);
 		}
-		if (flag.isFile() && flag.getName().endsWith(".MP3")
-				|| flag.getName().endsWith(".mp3")) {
+		if (flag.isFile() && flag.getName().endsWith(".MP3") //$NON-NLS-1$
+				|| flag.getName().endsWith(".mp3")) { //$NON-NLS-1$
 			return new AudioFileInfo(path);
 		}
 		return null;

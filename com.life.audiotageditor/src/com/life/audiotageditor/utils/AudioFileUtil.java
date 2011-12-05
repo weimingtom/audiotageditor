@@ -20,6 +20,7 @@ import org.jaudiotagger.tag.id3.ID3v1Tag;
 import org.jaudiotagger.tag.id3.ID3v23Tag;
 
 import com.life.audiotageditor.audio.AudioTag;
+import com.life.audiotageditor.constants.Constants;
 import com.life.audiotageditor.model.AudioFolder;
 import com.life.audiotageditor.model.AudioModel;
 import com.life.audiotageditor.model.AudioModelManager;
@@ -41,17 +42,17 @@ public class AudioFileUtil {
 			Map<Integer, String> map = new HashMap<Integer, String>();
 			String line;
 			while ((line = re.readLine()) != null) {
-				String id = StringUtil.substring(line, "\\d+\\.*");
+				String id = StringUtil.substring(line, "\\d+\\.*"); //$NON-NLS-1$
 				map.put(Integer.parseInt(id),
-						StringUtil.substring(line, "\\d.*"));
+						StringUtil.substring(line, "\\d.*")); //$NON-NLS-1$
 			}
 
 			int i = 1;
 			for (IAudioModel member : members) {
 				if (member instanceof IAudioFile) {
 					audioTag.setTitle(map.get(i).substring(0,
-							map.get(i).lastIndexOf(".")));
-					audioTag.setTrack(i + "");
+							map.get(i).lastIndexOf("."))); //$NON-NLS-1$
+					audioTag.setTrack(i + Constants.STRING_NONE);
 					saveAudioFile(member.getFullPath(), audioTag);
 
 					i++;

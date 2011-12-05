@@ -8,7 +8,7 @@ import com.life.audiotageditor.views.AudioView;
 
 public class Perspective implements IPerspectiveFactory {
 
-	public static final String PERSPECTIVE_ID = "com.life.audiotageditor.perspective";
+	public static final String PERSPECTIVE_ID = "com.life.audiotageditor.perspective"; //$NON-NLS-1$
 
 	public void createInitialLayout(IPageLayout layout) {
 

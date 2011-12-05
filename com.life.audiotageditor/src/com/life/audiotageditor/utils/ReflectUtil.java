@@ -4,12 +4,15 @@ import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.life.audiotageditor.constants.Constants;
+
 public class ReflectUtil {
 
 	public static String getProperty(Object bean, String name) {
 		try {
 			String propertyValue = BeanUtils.getProperty(bean, name);
-			return propertyValue == null ? "" : propertyValue;
+			return propertyValue == null ? Constants.STRING_NONE
+					: propertyValue;
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (InvocationTargetException e) {
@@ -17,7 +20,7 @@ public class ReflectUtil {
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
 		}
-		return "";
+		return Constants.STRING_NONE;
 	}
 
 	public static void setProperty(Object bean, String name, String value) {

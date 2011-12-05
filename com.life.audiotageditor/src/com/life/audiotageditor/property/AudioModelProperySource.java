@@ -12,14 +12,14 @@ import com.life.audiotageditor.model.AudioModel;
 
 public class AudioModelProperySource implements IPropertySource {
 
-	private static final String FILE_NAME = "fileName";
-	private static final String PATH = "path";
-	private static final String TAG = "tag";
-	private static final String CODEC = "codec";
-	private static final String BIT_RATE = "bitRate";
-	private static final String FREQUENCY = "frequency";
-	private static final String LENGTH = "length";
-	private static final String MODIFIED = "modified";
+	private static final String FILE_NAME = "fileName"; //$NON-NLS-1$
+	private static final String PATH = "path"; //$NON-NLS-1$
+	private static final String TAG = "tag"; //$NON-NLS-1$
+	private static final String CODEC = "codec"; //$NON-NLS-1$
+	private static final String BIT_RATE = "bitRate"; //$NON-NLS-1$
+	private static final String FREQUENCY = "frequency"; //$NON-NLS-1$
+	private static final String LENGTH = "length"; //$NON-NLS-1$
+	private static final String MODIFIED = "modified"; //$NON-NLS-1$
 
 	private AudioModel audioModel;
 
@@ -37,20 +37,20 @@ public class AudioModelProperySource implements IPropertySource {
 	public IPropertyDescriptor[] getPropertyDescriptors() {
 		if (audioModel instanceof AudioFolder) {
 			IPropertyDescriptor[] descriptors = new IPropertyDescriptor[2];
-			descriptors[0] = new TextPropertyDescriptor(FILE_NAME, "FileName");
-			descriptors[1] = new TextPropertyDescriptor(PATH, "Path");
+			descriptors[0] = new TextPropertyDescriptor(FILE_NAME, Messages.AudioModelProperySource_file_name);
+			descriptors[1] = new TextPropertyDescriptor(PATH, Messages.AudioModelProperySource_path);
 			return descriptors;
 		}
 		if (audioModel instanceof AudioFile) {
 			IPropertyDescriptor[] descriptors = new IPropertyDescriptor[8];
-			descriptors[0] = new TextPropertyDescriptor(FILE_NAME, "FileName");
-			descriptors[1] = new TextPropertyDescriptor(PATH, "Path");
-			descriptors[2] = new TextPropertyDescriptor(TAG, "Tag");
-			descriptors[3] = new TextPropertyDescriptor(CODEC, "Codec");
-			descriptors[4] = new TextPropertyDescriptor(BIT_RATE, "BitRate");
-			descriptors[5] = new TextPropertyDescriptor(FREQUENCY, "Frequency");
-			descriptors[6] = new TextPropertyDescriptor(LENGTH, "Length");
-			descriptors[7] = new TextPropertyDescriptor(MODIFIED, "Modified");
+			descriptors[0] = new TextPropertyDescriptor(FILE_NAME, Messages.AudioModelProperySource_file_name);
+			descriptors[1] = new TextPropertyDescriptor(PATH, Messages.AudioModelProperySource_path);
+			descriptors[2] = new TextPropertyDescriptor(TAG, Messages.AudioModelProperySource_tag);
+			descriptors[3] = new TextPropertyDescriptor(CODEC, Messages.AudioModelProperySource_codes);
+			descriptors[4] = new TextPropertyDescriptor(BIT_RATE, Messages.AudioModelProperySource_bit_rate);
+			descriptors[5] = new TextPropertyDescriptor(FREQUENCY, Messages.AudioModelProperySource_frequency);
+			descriptors[6] = new TextPropertyDescriptor(LENGTH, Messages.AudioModelProperySource_length);
+			descriptors[7] = new TextPropertyDescriptor(MODIFIED, Messages.AudioModelProperySource_modified);
 			return descriptors;
 		}
 

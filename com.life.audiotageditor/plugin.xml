@@ -40,12 +40,12 @@
       <view
             class="com.life.audiotageditor.views.AudioView"
             id="com.life.audiotageditor.views.AudioView"
-            name="Audio View">
+            name="%audioViewName">
       </view>
       <view
             class="com.life.audiotageditor.views.AudioPropertySheet"
             id="com.life.audiotageditor.views.AudioPropertySheet"
-            name="Audio Property Sheet"
+            name="%audioPropertySheetName"
             restorable="true">
       </view>
    </extension>
@@ -54,7 +54,7 @@
       <editor
             class="com.life.audiotageditor.editor.AudioTagEditor"
             id="com.life.audiotageditor.editor.AudioTagEditor"
-            name="Audio Tag Editor">
+            name="%audioTagEditorName">
       </editor>
    </extension>
    <extension
@@ -73,15 +73,15 @@
          point="org.eclipse.ui.commands">
       <command
             id="com.life.audiotageditor.commands.openFolderCommand"
-            name="Open Audio Folder">
+            name="%openFolderCommandName">
       </command>
       <command
             id="com.life.audiotageditor.commands.openFileCommand"
-            name="Open Audio File">
+            name="%openFileCommandName">
       </command>
       <command
             id="com.life.audiotageditor.commands.batchEditCommand"
-            name="BatchEdit Audio File">
+            name="%batchEditCommandName">
       </command>
    </extension>
    <extension
@@ -105,7 +105,7 @@
             locationURI="menu:org.eclipse.ui.main.menu?after=additions">
          <menu
                id="com.life.audiotageditor.menus.fileMenu"
-               label="File"
+               label="%fileMenuLabel"
                mnemonic="M">
             <command
                   commandId="com.life.audiotageditor.commands.openFolderCommand"
@@ -135,12 +135,12 @@
             </separator>
             <command
                   commandId="org.eclipse.ui.file.exit"
-                  label="Exit">
+                  label="%exitMenuLabel">
             </command>
          </menu>
          <menu
                id="com.life.audiotageditor.menus.helpMenu"
-               label="Help">
+               label="%helpMenuLabel">
             <command
                   commandId="org.eclipse.ui.help.aboutAction"
                   id="com.life.audiotageditor.menus.aboutAction"
@@ -156,7 +156,7 @@
                   commandId="com.life.audiotageditor.commands.openFolderCommand"
                   icon="icons/folder.gif"
                   id="com.life.audiotageditor.toolbars.openFolderCommand"
-                  tooltip="Open Folder">
+                  tooltip="%openFolderToolbarTooltip">
             </command>
          </toolbar>
          <toolbar
@@ -165,7 +165,7 @@
                   commandId="com.life.audiotageditor.commands.openFileCommand"
                   icon="icons/file.gif"
                   id="com.life.audiotageditor.toolbars.openFileCommand"
-                  tooltip="Open File">
+                  tooltip="%openFileToolbarTooltip">
             </command>
          </toolbar>
       </menuContribution>

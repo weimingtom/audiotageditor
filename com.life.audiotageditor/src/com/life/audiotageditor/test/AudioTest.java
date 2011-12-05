@@ -26,7 +26,7 @@ public class AudioTest {
 	@Test
 	public void workspaceTest() {
 		AudioModel root = (AudioModel) AudioModelManager.instance().getRoot();
-		IAudioFolder audioFolder = root.getFolder("D:/mp3/");
+		IAudioFolder audioFolder = root.getFolder("D:/mp3/"); //$NON-NLS-1$
 
 		AudioModel[] audioModels = (AudioModel[]) audioFolder.members();
 		for (AudioModel audioModel : audioModels) {
@@ -42,10 +42,10 @@ public class AudioTest {
 
 	@Test
 	public void test() {
-		String test = "a:fs/fsdfmp3/";
+		String test = "a:fs/fsdfmp3/"; //$NON-NLS-1$
 
 		boolean result = test
-				.matches(".*/|.*[/A-Za-z0-9_].mp3|.*[/A-Za-z0-9_].MP3");
+				.matches(".*/|.*[/A-Za-z0-9_].mp3|.*[/A-Za-z0-9_].MP3"); //$NON-NLS-1$
 		// boolean result = test.matches(".*/.*.mp3");
 
 		System.out.println(result);
@@ -53,7 +53,7 @@ public class AudioTest {
 
 	@Test
 	public void mp3TagReadeTest() {
-		File testFile = new File("src/com/life/audiotageditor/test/test.mp3");
+		File testFile = new File("src/com/life/audiotageditor/test/test.mp3"); //$NON-NLS-1$
 
 		try {
 			AudioFile audioFile = AudioFileIO.read(testFile);
@@ -84,21 +84,21 @@ public class AudioTest {
 
 	@Test
 	public void mp3TagWriteTest() {
-		File testFile = new File("src/com/life/audiotageditor/test/test.mp3");
+		File testFile = new File("src/com/life/audiotageditor/test/test.mp3"); //$NON-NLS-1$
 
 		try {
 			AudioFile audioFile = AudioFileIO.read(testFile);
 			Tag tagv1 = new ID3v1Tag();
-			tagv1.setField(FieldKey.ALBUM, "New Concept Engl");
-			tagv1.setField(FieldKey.TITLE, "New Concept Engli");
-			tagv1.setField(FieldKey.ARTIST, "New Concept Englis");
+			tagv1.setField(FieldKey.ALBUM, "New Concept Engl"); //$NON-NLS-1$
+			tagv1.setField(FieldKey.TITLE, "New Concept Engli"); //$NON-NLS-1$
+			tagv1.setField(FieldKey.ARTIST, "New Concept Englis"); //$NON-NLS-1$
 			audioFile.setTag(tagv1);
 
 			Tag tagv23 = new ID3v23Tag();
-			tagv23.setField(FieldKey.ALBUM, "New Concept En");
-			tagv23.setField(FieldKey.TITLE, "New Concept En");
-			tagv23.setField(FieldKey.ARTIST, "New Concept ");
-			tagv23.setField(FieldKey.TRACK, "1");
+			tagv23.setField(FieldKey.ALBUM, "New Concept En"); //$NON-NLS-1$
+			tagv23.setField(FieldKey.TITLE, "New Concept En"); //$NON-NLS-1$
+			tagv23.setField(FieldKey.ARTIST, "New Concept "); //$NON-NLS-1$
+			tagv23.setField(FieldKey.TRACK, "1"); //$NON-NLS-1$
 			audioFile.setTag(tagv23);
 
 			AudioFileIO.write(audioFile);

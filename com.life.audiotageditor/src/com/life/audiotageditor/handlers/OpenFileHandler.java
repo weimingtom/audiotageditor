@@ -53,8 +53,8 @@ public class OpenFileHandler extends AbstractHandler {
 
 	private String openFileDialog(IWorkbenchWindow window) {
 		FileDialog dialog = new FileDialog(window.getShell(), SWT.OPEN);
-		dialog.setText("Audio File");
-		dialog.setFilterExtensions(new String[] { "*.mp3", "*.MP3" });
+		dialog.setText(Messages.OpenFileHandler_dialog_text);
+		dialog.setFilterExtensions(new String[] { "*.mp3", "*.MP3" }); //$NON-NLS-1$ //$NON-NLS-2$
 		return dialog.open();
 	}
 }

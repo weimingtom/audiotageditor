@@ -15,11 +15,11 @@ public class AudioLabelProvider extends LabelProvider {
 		if (element instanceof AudioModel) {
 			AudioModel audioModel = ((AudioModel) element);
 			if (audioModel instanceof AudioFolder) {
-				return Activator.getImageDescriptor("icons/folder.gif")
+				return Activator.getImageDescriptor("icons/folder.gif") //$NON-NLS-1$
 						.createImage();
 			}
 			if (audioModel instanceof AudioFile) {
-				return Activator.getImageDescriptor("icons/file.gif")
+				return Activator.getImageDescriptor("icons/file.gif") //$NON-NLS-1$
 						.createImage();
 			}
 		}

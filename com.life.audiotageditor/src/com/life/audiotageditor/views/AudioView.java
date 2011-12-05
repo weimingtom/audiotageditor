@@ -10,7 +10,7 @@ import com.life.audiotageditor.trees.AudioLabelProvider;
 
 public class AudioView extends ViewPart {
 
-	public static final String ID = "com.life.audiotageditor.views.AudioView";
+	public static final String ID = "com.life.audiotageditor.views.AudioView"; //$NON-NLS-1$
 
 	private TreeViewer treeViewer;
 

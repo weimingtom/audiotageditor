@@ -6,7 +6,7 @@ import org.eclipse.ui.forms.editor.FormEditor;
 
 public class AudioTagEditor extends FormEditor {
 
-	public static final String ID = "com.life.audiotageditor.editor.AudioTagEditor";
+	public static final String ID = "com.life.audiotageditor.editor.AudioTagEditor"; //$NON-NLS-1$
 
 	@Override
 	protected void addPages() {

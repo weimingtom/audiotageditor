@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 public class StringUtil {
 
 	public static String formatPath(String path) {
-		return path.replaceAll("\\\\", "/");
+		return path.replaceAll("\\\\", "/"); //$NON-NLS-1$ //$NON-NLS-2$
 	}
 
 	public static String substring(String string, String pattern) {

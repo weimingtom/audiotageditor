@@ -5,6 +5,7 @@ import org.eclipse.jface.viewers.LabelProvider;
 import org.eclipse.swt.graphics.Image;
 
 import com.life.audiotageditor.audio.AudioTag;
+import com.life.audiotageditor.constants.Constants;
 import com.life.audiotageditor.model.AudioFile;
 import com.life.audiotageditor.model.AudioFileInfo;
 
@@ -47,6 +48,6 @@ public class AudioTagLabelProvider extends LabelProvider implements
 				break;
 			}
 		}
-		return "";
+		return Constants.STRING_NONE;
 	}
 }

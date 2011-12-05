@@ -24,6 +24,7 @@ import org.eclipse.ui.forms.widgets.FormToolkit;
 import org.eclipse.ui.forms.widgets.ScrolledForm;
 
 import com.life.audiotageditor.audio.AudioTag;
+import com.life.audiotageditor.constants.Constants;
 import com.life.audiotageditor.model.AudioFile;
 import com.life.audiotageditor.model.AudioFileInfo;
 import com.life.audiotageditor.tables.AudioTagContentProvider;
@@ -34,8 +35,8 @@ import com.life.audiotageditor.views.AudioView;
 
 public class AudioTagPage extends FormPage implements ISelectionListener {
 
-	public static final String ID = "com.life.audiotageditor.editor.AudioTagPage";
-	public static final String TITLE = "Audio Tag Page";
+	public static final String ID = "com.life.audiotageditor.editor.AudioTagPage"; //$NON-NLS-1$
+	public static final String TITLE = Messages.AudioTagPage_audio_tag_page_title;
 	private TableViewer tableViewer;
 	private Table table;
 
@@ -47,7 +48,7 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 
 		@Override
 		public boolean canModify(Object element, String property) {
-			if (property.equals("name")) {
+			if (property.equals("name")) { //$NON-NLS-1$
 				return false;
 			}
 			return true;
@@ -60,7 +61,7 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 						.getAudioModelInfo()).getAudioTag();
 				return ReflectUtil.getProperty(audioTag, property);
 			}
-			return "";
+			return Constants.STRING_NONE;
 		}
 
 		@Override
@@ -108,39 +109,39 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 
 		TableColumn nameColumn = new TableColumn(table, SWT.NONE);
 		nameColumn.setWidth(150);
-		nameColumn.setText("Name");
+		nameColumn.setText(Messages.AudioTagPage_name_column);
 
 		TableColumn titleColumn = new TableColumn(table, SWT.NONE);
 		titleColumn.setWidth(150);
-		titleColumn.setText("Title");
+		titleColumn.setText(Messages.AudioTagPage_title_column);
 
 		TableColumn artistColumn = new TableColumn(table, SWT.NONE);
 		artistColumn.setWidth(150);
-		artistColumn.setText("Artist");
+		artistColumn.setText(Messages.AudioTagPage_artist_column);
 
 		TableColumn albumColumn = new TableColumn(table, SWT.NONE);
 		albumColumn.setWidth(200);
-		albumColumn.setText("Album");
+		albumColumn.setText(Messages.AudioTagPage_album_column);
 
 		TableColumn yearColumn = new TableColumn(table, SWT.NONE);
 		yearColumn.setWidth(150);
-		yearColumn.setText("Year");
+		yearColumn.setText(Messages.AudioTagPage_year_column);
 
 		TableColumn trackColumn = new TableColumn(table, SWT.NONE);
 		trackColumn.setWidth(50);
-		trackColumn.setText("Track");
+		trackColumn.setText(Messages.AudioTagPage_track_column);
 
 		TableColumn genreColumn = new TableColumn(table, SWT.NONE);
 		genreColumn.setWidth(100);
-		genreColumn.setText("Genre");
+		genreColumn.setText(Messages.AudioTagPage_genre_column);
 
 		TableColumn commentColumn = new TableColumn(table, SWT.NONE);
 		commentColumn.setWidth(100);
-		commentColumn.setText("Comment");
+		commentColumn.setText(Messages.AudioTagPage_comment_column);
 
-		TableColumn albumArtist = new TableColumn(table, SWT.NONE);
-		albumArtist.setWidth(200);
-		albumArtist.setText("AlbumArtist");
+		TableColumn albumArtistColumn = new TableColumn(table, SWT.NONE);
+		albumArtistColumn.setWidth(200);
+		albumArtistColumn.setText(Messages.AudioTagPage_album_artist_column);
 
 		table.setSortColumn(trackColumn);
 		// table.setSortDirection(SWT.UP);
@@ -149,9 +150,9 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 		tableViewer.setLabelProvider(new AudioTagLabelProvider());
 		tableViewer.setInput(null);
 
-		tableViewer.setColumnProperties(new String[] { "name", "title",
-				"artist", "album", "year", "track", "genre", "comment",
-				"albumArtist" });
+		tableViewer.setColumnProperties(new String[] { "name", "title", //$NON-NLS-1$ //$NON-NLS-2$
+				"artist", "album", "year", "track", "genre", "comment", //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$ //$NON-NLS-5$ //$NON-NLS-6$
+				"albumArtist" }); //$NON-NLS-1$
 		CellEditor[] cellEditors = new CellEditor[9];
 		for (int i = 1; i < 9; i++) {
 			cellEditors[i] = new TextCellEditor(tableViewer.getTable());
@@ -160,7 +161,7 @@ public class AudioTagPage extends FormPage implements ISelectionListener {
 						.addVerifyListener(new VerifyListener() {
 							@Override
 							public void verifyText(VerifyEvent e) {
-								boolean b = (e.text.matches("[0-9]"));
+								boolean b = (e.text.matches("[0-9]")); //$NON-NLS-1$
 								e.doit = b;
 							}
 						});

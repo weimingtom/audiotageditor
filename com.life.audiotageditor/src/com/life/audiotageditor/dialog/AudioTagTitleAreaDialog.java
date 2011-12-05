@@ -60,8 +60,8 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 	 */
 	@Override
 	protected Control createDialogArea(Composite parent) {
-		setMessage("BatchEdit Dialog");
-		setTitle("BatchEdit Dialog");
+		setMessage(Messages.AudioTagTitleAreaDialog_batchedit_dialog_message);
+		setTitle(Messages.AudioTagTitleAreaDialog_batchedit_dialog_title);
 		Composite area = (Composite) super.createDialogArea(parent);
 		Composite container = new Composite(area, SWT.NONE);
 		container.setLayout(new FormLayout());
@@ -72,7 +72,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		audioFolderLabelFormData.left = new FormAttachment(0, 6);
 		audioFolderLabelFormData.top = new FormAttachment(0, 13);
 		audioFolderLabel.setLayoutData(audioFolderLabelFormData);
-		audioFolderLabel.setText("Select Audio Folder");
+		audioFolderLabel.setText(Messages.AudioTagTitleAreaDialog_audit_folder_label);
 
 		audioFolderText = new Text(container, SWT.BORDER);
 		FormData audioFolderTextFormData = new FormData();
@@ -88,7 +88,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 				-5, SWT.TOP);
 		audioFolderButtonFormData.right = new FormAttachment(100, -6);
 		audioFolderButton.setLayoutData(audioFolderButtonFormData);
-		audioFolderButton.setText("Browse");
+		audioFolderButton.setText(Messages.AudioTagTitleAreaDialog_audio_folder_button);
 		audioFolderButton.addMouseListener(new MouseListener() {
 
 			@Override
@@ -112,9 +112,9 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 				for (IAudioModel member : members) {
 					if (member instanceof IAudioFile) {
 						builder.append(i);
-						builder.append("-");
+						builder.append("-"); //$NON-NLS-1$
 						builder.append(member.getName());
-						builder.append("\r\n");
+						builder.append("\r\n"); //$NON-NLS-1$
 
 						i++;
 					}
@@ -134,7 +134,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		artistLabelFormData.top = new FormAttachment(audioFolderLabel, 12);
 		artistLabelFormData.left = new FormAttachment(0, 6);
 		artistLabel.setLayoutData(artistLabelFormData);
-		artistLabel.setText("Artist");
+		artistLabel.setText(Messages.AudioTagTitleAreaDialog_artist_label);
 
 		artistText = new Text(container, SWT.BORDER);
 		FormData artistTextFormData = new FormData();
@@ -149,7 +149,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		albumLabelFormData.bottom = new FormAttachment(artistLabel, 0,
 				SWT.BOTTOM);
 		albumLabel.setLayoutData(albumLabelFormData);
-		albumLabel.setText("Album");
+		albumLabel.setText(Messages.AudioTagTitleAreaDialog_album_label);
 
 		albumText = new Text(container, SWT.BORDER);
 		FormData albumTextFormData = new FormData();
@@ -163,7 +163,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		yearLabelFormData.top = new FormAttachment(artistLabel, 12);
 		yearLabelFormData.left = new FormAttachment(0, 6);
 		yearLabel.setLayoutData(yearLabelFormData);
-		yearLabel.setText("Year");
+		yearLabel.setText(Messages.AudioTagTitleAreaDialog_year_label);
 
 		yearText = new Text(container, SWT.BORDER);
 		FormData yearTextFormData = new FormData();
@@ -177,7 +177,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		genreLabelFormData.bottom = new FormAttachment(yearLabel, 0, SWT.BOTTOM);
 		genreLabelFormData.left = new FormAttachment(50, 6);
 		genreLabel.setLayoutData(genreLabelFormData);
-		genreLabel.setText("Genre");
+		genreLabel.setText(Messages.AudioTagTitleAreaDialog_genre_label);
 
 		genreText = new Text(container, SWT.BORDER);
 		FormData genreTextFormData = new FormData();
@@ -191,7 +191,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		commentLabelFormData.top = new FormAttachment(yearLabel, 12);
 		commentLabelFormData.left = new FormAttachment(0, 6);
 		commentLabel.setLayoutData(commentLabelFormData);
-		commentLabel.setText("Comment");
+		commentLabel.setText(Messages.AudioTagTitleAreaDialog_comment_label);
 
 		commentText = new Text(container, SWT.BORDER);
 		FormData commentTextFormData = new FormData();
@@ -206,7 +206,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 				SWT.BOTTOM);
 		albumArtistLabelFormData.left = new FormAttachment(50, 6);
 		albumArtistLabel.setLayoutData(albumArtistLabelFormData);
-		albumArtistLabel.setText("AlbumArtist");
+		albumArtistLabel.setText(Messages.AudioTagTitleAreaDialog_album_artist_label);
 
 		albumArtistText = new Text(container, SWT.BORDER);
 		FormData albumArtistTextFormData = new FormData();
@@ -216,7 +216,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		albumArtistText.setLayoutData(albumArtistTextFormData);
 
 		Group audioTagDetailGroup = new Group(container, SWT.NONE);
-		audioTagDetailGroup.setText("Audio Tag Detail");
+		audioTagDetailGroup.setText(Messages.AudioTagTitleAreaDialog_audio_tag_detail_group);
 		audioTagDetailGroup.setLayout(new FillLayout(SWT.HORIZONTAL));
 		FormData audioTagDetailGroupFormData = new FormData();
 		audioTagDetailGroupFormData.bottom = new FormAttachment(100, -10);
@@ -283,7 +283,7 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 
 	private String openFolderDialog(Shell shell) {
 		DirectoryDialog dialog = new DirectoryDialog(shell, SWT.OPEN);
-		dialog.setText("Audio Folder");
+		dialog.setText(Messages.AudioTagTitleAreaDialog_dialog_text);
 		return dialog.open();
 	}
 }

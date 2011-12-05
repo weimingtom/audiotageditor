@@ -5,7 +5,7 @@ import org.eclipse.ui.views.properties.PropertySheet;
 
 public class AudioPropertySheet extends PropertySheet {
 
-	public static final String ID = "com.life.audiotageditor.views.AudioPropertySheet";
+	public static final String ID = "com.life.audiotageditor.views.AudioPropertySheet"; //$NON-NLS-1$
 
 	@Override
 	public IPage getCurrentPage() {

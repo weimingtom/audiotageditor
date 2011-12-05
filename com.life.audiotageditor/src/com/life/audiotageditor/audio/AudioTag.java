@@ -7,6 +7,8 @@ import org.jaudiotagger.audio.AudioFile;
 import org.jaudiotagger.tag.FieldKey;
 import org.jaudiotagger.tag.Tag;
 
+import com.life.audiotageditor.constants.Constants;
+
 public class AudioTag {
 
 	private AudioFile audioFile;
@@ -43,29 +45,29 @@ public class AudioTag {
 		this.tag = audioTag.getClass().getSimpleName();
 		this.codec = audioFile.getAudioHeader().getEncodingType();
 		this.bitRate = audioFile.getAudioHeader().getBitRate();
-		this.frequency = "";
-		this.length = audioFile.getFile().length() + "";
+		this.frequency = Constants.STRING_NONE;
+		this.length = audioFile.getFile().length() + Constants.STRING_NONE;
 		this.modified = SimpleDateFormat.getDateTimeInstance().format(
 				new Date(audioFile.getFile().lastModified()));
 	}
 
-	private String title = "";
-	private String artist = "";
-	private String album = "";
-	private String year = "";
-	private String track = "";
-	private String genre = "";
-	private String comment = "";
-	private String albumArtist = "";
+	private String title = Constants.STRING_NONE;
+	private String artist = Constants.STRING_NONE;
+	private String album = Constants.STRING_NONE;
+	private String year = Constants.STRING_NONE;
+	private String track = Constants.STRING_NONE;
+	private String genre = Constants.STRING_NONE;
+	private String comment = Constants.STRING_NONE;
+	private String albumArtist = Constants.STRING_NONE;
 
-	private String fileName = "";
-	private String path = "";
-	private String tag = "";
-	private String codec = "";
-	private String bitRate = "";
-	private String frequency = "";
-	private String length = "";
-	private String modified = "";
+	private String fileName = Constants.STRING_NONE;
+	private String path = Constants.STRING_NONE;
+	private String tag = Constants.STRING_NONE;
+	private String codec = Constants.STRING_NONE;
+	private String bitRate = Constants.STRING_NONE;
+	private String frequency = Constants.STRING_NONE;
+	private String length = Constants.STRING_NONE;
+	private String modified = Constants.STRING_NONE;
 
 	public String getTitle() {
 		return title;

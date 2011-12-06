@@ -18,6 +18,11 @@
 
    <windowImages/>
 
+   <splash
+      location="com.life.audiotageditor"
+      startupProgressRect="0,280,455,15"
+      startupMessageRect="7,220,441,20"
+      startupForegroundColor="C8D5EA" />
    <launcher>
       <solaris/>
       <win useIco="false">

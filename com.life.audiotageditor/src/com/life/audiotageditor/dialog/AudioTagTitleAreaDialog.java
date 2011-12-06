@@ -28,6 +28,7 @@ import com.life.audiotageditor.model.AudioModel;
 import com.life.audiotageditor.model.AudioModelManager;
 import com.life.audiotageditor.model.IAudioFile;
 import com.life.audiotageditor.model.IAudioModel;
+import com.life.audiotageditor.utils.AudioFileUtil;
 import com.life.audiotageditor.utils.StringUtil;
 import com.life.audiotageditor.views.AudioView;
 
@@ -53,6 +54,12 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		this.parentShell = parentShell;
 	}
 
+	@Override
+	protected void configureShell(Shell newShell) {
+		super.configureShell(newShell);
+		newShell.setText(Messages.AudioTagTitleAreaDialog_batchedit_dialog_title);
+	}
+
 	/**
 	 * Create contents of the dialog.
 	 * 
@@ -72,11 +79,12 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		audioFolderLabelFormData.left = new FormAttachment(0, 6);
 		audioFolderLabelFormData.top = new FormAttachment(0, 13);
 		audioFolderLabel.setLayoutData(audioFolderLabelFormData);
-		audioFolderLabel.setText(Messages.AudioTagTitleAreaDialog_audit_folder_label);
+		audioFolderLabel
+				.setText(Messages.AudioTagTitleAreaDialog_audit_folder_label);
 
 		audioFolderText = new Text(container, SWT.BORDER);
 		FormData audioFolderTextFormData = new FormData();
-		audioFolderTextFormData.left = new FormAttachment(audioFolderLabel, 6);
+		audioFolderTextFormData.left = new FormAttachment(15);
 		audioFolderTextFormData.top = new FormAttachment(0, 10);
 		audioFolderText.setLayoutData(audioFolderTextFormData);
 
@@ -88,7 +96,8 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 				-5, SWT.TOP);
 		audioFolderButtonFormData.right = new FormAttachment(100, -6);
 		audioFolderButton.setLayoutData(audioFolderButtonFormData);
-		audioFolderButton.setText(Messages.AudioTagTitleAreaDialog_audio_folder_button);
+		audioFolderButton
+				.setText(Messages.AudioTagTitleAreaDialog_audio_folder_button);
 		audioFolderButton.addMouseListener(new MouseListener() {
 
 			@Override
@@ -206,7 +215,8 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 				SWT.BOTTOM);
 		albumArtistLabelFormData.left = new FormAttachment(50, 6);
 		albumArtistLabel.setLayoutData(albumArtistLabelFormData);
-		albumArtistLabel.setText(Messages.AudioTagTitleAreaDialog_album_artist_label);
+		albumArtistLabel
+				.setText(Messages.AudioTagTitleAreaDialog_album_artist_label);
 
 		albumArtistText = new Text(container, SWT.BORDER);
 		FormData albumArtistTextFormData = new FormData();
@@ -216,7 +226,8 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 		albumArtistText.setLayoutData(albumArtistTextFormData);
 
 		Group audioTagDetailGroup = new Group(container, SWT.NONE);
-		audioTagDetailGroup.setText(Messages.AudioTagTitleAreaDialog_audio_tag_detail_group);
+		audioTagDetailGroup
+				.setText(Messages.AudioTagTitleAreaDialog_audio_tag_detail_group);
 		audioTagDetailGroup.setLayout(new FillLayout(SWT.HORIZONTAL));
 		FormData audioTagDetailGroupFormData = new FormData();
 		audioTagDetailGroupFormData.bottom = new FormAttachment(100, -10);
@@ -257,7 +268,9 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 	@Override
 	protected void okPressed() {
 		String audioFolderTextValue = audioFolderText.getText();
-		if (audioFolderTextValue != null && !(audioFolderTextValue.isEmpty())) {
+		String audioTagDetailTextValue = audioTagDetailText.getText();
+		if (audioFolderTextValue != null
+				&& !(audioTagDetailTextValue.isEmpty())) {
 			AudioTag audioTag = new AudioTag();
 			audioTag.setArtist(artistText.getText());
 			audioTag.setAlbum(albumText.getText());
@@ -265,6 +278,8 @@ public class AudioTagTitleAreaDialog extends TitleAreaDialog {
 			audioTag.setGenre(genreText.getText());
 			audioTag.setComment(commentText.getText());
 			audioTag.setAlbumArtist(albumArtistText.getText());
+			AudioFileUtil.saveAudioFile(audioFolderTextValue,
+					audioTagDetailTextValue, audioTag);
 
 			AudioView audioView = (AudioView) PlatformUI.getWorkbench()
 					.getActiveWorkbenchWindow().getActivePage()

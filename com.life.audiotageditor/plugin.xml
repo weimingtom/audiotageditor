@@ -25,6 +25,22 @@
                name="aboutText"
                value="%productBlurb">
          </property>
+         <property
+               name="startupForegroundColor"
+               value="C8D5EA">
+         </property>
+         <property
+               name="startupMessageRect"
+               value="7,220,441,20">
+         </property>
+         <property
+               name="startupProgressRect"
+               value="0,280,455,15">
+         </property>
+         <property
+               name="preferenceCustomization"
+               value="plugin_customization.ini">
+         </property>
       </product>
    </extension>
    <extension
@@ -125,7 +141,7 @@
             </separator>
             <command
                   commandId="com.life.audiotageditor.commands.batchEditCommand"
-                  icon="icons/folder.gif"
+                  icon="icons/batchFile.gif"
                   id="com.life.audiotageditor.menus.batchEditCommand"
                   mnemonic="S">
             </command>
@@ -144,28 +160,31 @@
             <command
                   commandId="org.eclipse.ui.help.aboutAction"
                   id="com.life.audiotageditor.menus.aboutAction"
-                  >
+                  label="%aboutActionLabel">
             </command>
          </menu>
       </menuContribution>
       <menuContribution
             locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
          <toolbar
-               id="com.life.audiotageditor.toolbars.openFolderToolbar">
+               id="com.life.audiotageditor.toolbars.editFileToolbar">
             <command
                   commandId="com.life.audiotageditor.commands.openFolderCommand"
                   icon="icons/folder.gif"
                   id="com.life.audiotageditor.toolbars.openFolderCommand"
                   tooltip="%openFolderToolbarTooltip">
             </command>
-         </toolbar>
-         <toolbar
-               id="com.life.audiotageditor.toolbars.openFileToolbar">
             <command
                   commandId="com.life.audiotageditor.commands.openFileCommand"
                   icon="icons/file.gif"
                   id="com.life.audiotageditor.toolbars.openFileCommand"
                   tooltip="%openFileToolbarTooltip">
+            </command>
+            <command
+                  commandId="com.life.audiotageditor.commands.batchEditCommand"
+                  icon="icons/batchFile.gif"
+                  id="com.life.audiotageditor.toolbars.batchEditCommand"
+                  tooltip="%batchEditToolbarTooltip">
             </command>
          </toolbar>
       </menuContribution>

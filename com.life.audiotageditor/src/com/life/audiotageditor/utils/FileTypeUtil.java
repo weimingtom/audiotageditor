@@ -19,36 +19,37 @@
  */
 package com.life.audiotageditor.utils;
 
-import java.lang.reflect.InvocationTargetException;
-
-import org.apache.commons.beanutils.BeanUtils;
+import java.io.File;
+import java.util.Arrays;
 
 import com.life.audiotageditor.constants.Constants;
+import com.life.audiotageditor.model.IAudioModel;
 
-public class ReflectUtil {
-
-	public static String getProperty(Object bean, String name) {
-		try {
-			String propertyValue = BeanUtils.getProperty(bean, name);
-			return propertyValue == null ? Constants.STRING_NONE
-					: propertyValue;
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
-		} catch (NoSuchMethodException e) {
-			e.printStackTrace();
+public class FileTypeUtil {
+	public static int getFileType(String path) {
+		if (path == null || path.isEmpty()) {
+			return IAudioModel.NULL_FLAG;
 		}
-		return Constants.STRING_NONE;
+		File file = new File(path);
+		if (file.isDirectory()) {
+			return IAudioModel.AUDIO_FOLDER;
+		}
+
+		String fileName = file.getName();
+		String fileNameExtension = fileName.lastIndexOf(".") > 0 ? fileName
+				.substring(fileName.lastIndexOf(".")) : Constants.STRING_NONE;
+		if (file.isFile() && isAudioFile(fileNameExtension)) {
+			return IAudioModel.AUDIO_FILE;
+		}
+		return IAudioModel.NULL_FLAG;
 	}
 
-	public static void setProperty(Object bean, String name, String value) {
-		try {
-			BeanUtils.setProperty(bean, name, value);
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (InvocationTargetException e) {
-			e.printStackTrace();
+	public static boolean isAudioFile(String fileExtension) {
+		if (fileExtension == null || fileExtension.isEmpty()) {
+			return false;
 		}
+
+		return Arrays.asList(Constants.FILE_TYPE.split("[,]")).contains(
+				fileExtension.toLowerCase());
 	}
 }

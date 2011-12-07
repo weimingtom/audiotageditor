@@ -19,11 +19,6 @@ Bundle-ActivationPolicy: lazy
 Bundle-Localization: plugin
 Bundle-ClassPath: lib/commons-beanutils.jar,
  lib/commons-logging.jar,
- lib/filterbuilder.jar,
- lib/htmllexer.jar,
- lib/htmlparser.jar,
  lib/jaudiotagger-2.0.3.jar,
  lib/junit-4.4.jar,
- lib/sax2.jar,
- lib/thumbelina.jar,
  .

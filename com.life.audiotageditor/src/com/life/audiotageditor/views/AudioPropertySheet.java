@@ -1,3 +1,22 @@
+/**
+ * This file is part of ${project_name}.
+ * 
+ * ${project_name} is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ * 
+ * ${project_name} is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * ${project_name}. If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * @see http://www.gnu.org/licenses/lgpl.txt
+ * @author art <lijianghui2000@gmail.com>
+ */
 package com.life.audiotageditor.views;
 
 import org.eclipse.ui.part.IPage;
@@ -10,28 +29,6 @@ public class AudioPropertySheet extends PropertySheet {
 	@Override
 	public IPage getCurrentPage() {
 		return super.getCurrentPage();
-
-		// if (super.getCurrentPage() == null) {
-		// return null;
-		// }
-		// PropertySheetPage propertySheetPage = new PropertySheetPage() {
-		// @Override
-		// public void createControl(Composite parent) {
-		// // 设置一个使用描述来排序的Sorter
-		// PropertySheetSorter sorter = new PropertySheetSorter() {
-		// public int compare(IPropertySheetEntry entryA,
-		// IPropertySheetEntry entryB) {
-		// // 使用IPropertySheetEntry的description排序.
-		// return getCollator().compare(entryA.getDescription(),
-		// entryB.getDescription());
-		// }
-		// };
-		// this.setSorter(sorter);
-		//
-		// super.createControl(parent);
-		// }
-		// };
-		// return propertySheetPage;
 	}
 
 }

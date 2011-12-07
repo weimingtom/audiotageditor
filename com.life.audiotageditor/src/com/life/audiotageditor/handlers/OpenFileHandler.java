@@ -1,3 +1,22 @@
+/**
+ * This file is part of ${project_name}.
+ * 
+ * ${project_name} is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU General Public License as published by the Free
+ * Software Foundation, either version 3 of the License, or (at your option) any
+ * later version.
+ * 
+ * ${project_name} is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU General Public License along with
+ * ${project_name}. If not, see <http://www.gnu.org/licenses/>.
+ * 
+ * @see http://www.gnu.org/licenses/lgpl.txt
+ * @author art <lijianghui2000@gmail.com>
+ */
 package com.life.audiotageditor.handlers;
 
 import org.eclipse.core.commands.AbstractHandler;
@@ -9,18 +28,13 @@ import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.ui.IWorkbenchWindow;
 import org.eclipse.ui.handlers.HandlerUtil;
 
+import com.life.audiotageditor.constants.Constants;
 import com.life.audiotageditor.model.AudioFile;
 import com.life.audiotageditor.model.AudioModel;
 import com.life.audiotageditor.model.AudioModelManager;
 import com.life.audiotageditor.utils.StringUtil;
 import com.life.audiotageditor.views.AudioView;
 
-/**
- * Our sample handler extends AbstractHandler, an IHandler base class.
- * 
- * @see org.eclipse.core.commands.IHandler
- * @see org.eclipse.core.commands.AbstractHandler
- */
 public class OpenFileHandler extends AbstractHandler {
 	/**
 	 * The constructor.
@@ -54,7 +68,7 @@ public class OpenFileHandler extends AbstractHandler {
 	private String openFileDialog(IWorkbenchWindow window) {
 		FileDialog dialog = new FileDialog(window.getShell(), SWT.OPEN);
 		dialog.setText(Messages.OpenFileHandler_dialog_text);
-		dialog.setFilterExtensions(new String[] { "*.mp3", "*.MP3" }); //$NON-NLS-1$ //$NON-NLS-2$
+		dialog.setFilterExtensions(Constants.FILE_TYPE.split("[,]")); //$NON-NLS-1$ //$NON-NLS-2$
 		return dialog.open();
 	}
 }
